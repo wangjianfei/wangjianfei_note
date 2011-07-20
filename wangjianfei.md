@@ -327,36 +327,36 @@
    
 # tar 
 
-    http://www.happypeter.org/posts/10
+http://www.happypeter.org/posts/10
 
 # ref 两本学习参考书
 
-    http://happypeter.github.com/LGCB/
+http://happypeter.github.com/LGCB/
 
-    http://billie66.github.com/TLCL/book/
+http://billie66.github.com/TLCL/book/
 
-    http://media.happypeter.org/  一些参考视频
+http://media.happypeter.org/  一些参考视频
 
 ## some of my favorite sites
 
-    http://www.linfo.org/
+http://www.linfo.org/
 
-    http://www.wikipedia.org/
+http://www.wikipedia.org/
 
-    http://news.ycombinator.com/news
+http://news.ycombinator.com/news
 
 
 # 个人学习
 
 ## language
 
-   https://github.com/happypeter/job-akae/wiki
+https://github.com/happypeter/job-akae/wiki
 
 ## translation
 
-   http://dict.youdao.com/
+http://dict.youdao.com/
 
-      有道辞典  通用的IT辞典
+有道辞典  通用的IT辞典
 
-   http://learn.akae.cn/media/index.html
+http://learn.akae.cn/media/index.html
 
