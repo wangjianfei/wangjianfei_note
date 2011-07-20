@@ -2,35 +2,35 @@
 
 ##vim 命令的基本模式：  
 
-    Command = operator + number + motion
-                d(elete)  1,2
-                y(ank)             gg+G
+Command = operator + number + motion
+	d(elete)  1,2
+	y(ank)             gg+G
 
-     对 vim的命令的基本操作主要包括以上三个部分
+对 vim的命令的基本操作主要包括以上三个部分
 
 ##vim基本命令：
     
-   ### 普通模式：
- 
-     undo 是 u键  撤销上次操作
+### 普通模式：
 
-     redo  是 ctrl+r 撤销超过 返回一步
- 
-   ### 模行模式：
+undo 是 u键  撤销上次操作
 
-      打开多个文件时的一些操作：
+redo  是 ctrl+r 撤销超过 返回一步
 
-      :e file.c  在当前文件下打开另一个当前目录下存在或者不存在的文件
+### 模行模式：
 
-      :ls 看大开了几个文件
+打开多个文件时的一些操作：
 
-      :bn 看下一个文件
+:e file.c  在当前文件下打开另一个当前目录下存在或者不存在的文件
 
-      :bp 看上一个文件
+:ls 看大开了几个文件
 
-      :bd 关闭当前文件  首先要保存
+:bn 看下一个文件
 
-      :wa 保存所有
+:bp 看上一个文件
+
+:bd 关闭当前文件  首先要保存
+
+:wa 保存所有
 
 ##vim的tip:
 
@@ -57,63 +57,63 @@ vimtutor 是查看vim的基本命令信息
 
 写程序时的vim tip：在写vim时，在普通模式时
 
-<p>&nbsp;&nbsp;&nbsp;&nbsp;  :w 保存文件  必须首先要做</p>
+:w 保存文件  必须首先要做</p>
 
-     :sh 在当前vim上打开一个bash
-     
-                     ctrl d 或者exit 则可以关闭当前的bash
+:sh 在当前vim上打开一个bash
 
-                其优点是：光标在vim中的位置不会变  较大程序时比较方便
+ctrl d 或者exit 则可以关闭当前的bash
+
+其优点是：光标在vim中的位置不会变  较大程序时比较方便
 
 
 #两种网页编写语言：
 
 ##markdown
 
-    http://happypeter.github.com/LGCB/book/toy_markdown.html  是peter老师的笔记
+http://happypeter.github.com/LGCB/book/toy_markdown.html  是peter老师的笔记
           里面的链接可以得到学习markdown的资料
 
-    word 两边都加上两个'__' 则可以将 word 变成粗体
+word 两边都加上两个'__' 则可以将 word 变成粗体
 
 ##html study
 
-     http://www.w3schools.com/    学习 html语言  
+http://www.w3schools.com/    学习 html语言  
 
-     其实markdown语言也是转换成html语言来实现网页编写的
+其实markdown语言也是转换成html语言来实现网页编写的
 
-     markdown的后缀名是.md
+markdown的后缀名是.md
 
-     html语言的后缀名是.html
-   
-     终端中命令： markdown file.md > file.html 
+html语言的后缀名是.html
 
-                  firefox file.html
-    
+终端中命令： markdown file.md > file.html 
+
+firefox file.html
+
 
 # git    管理软件的软件
 
 ## install
 
-    sudo apt-get install git-core 安装 git  管理软件的软件
+sudo apt-get install git-core 安装 git  管理软件的软件
 
-    sudo apt-get install tig     安装  tig   查看软件修改的地方
+sudo apt-get install tig     安装  tig   查看软件修改的地方
 
 
 ##git command
 
-      git pull  下载最新的笔记  
+git pull  下载最新的笔记  
 
-      git diff 查看自己现在wangjianfei.md 和.git 里面的wangjianfei.md的区别 
+git diff 查看自己现在wangjianfei.md 和.git 里面的wangjianfei.md的区别 
 
-      git reset --hard HEAD 将自己的wangjianfei.md还原成.git 里
-            面的wangjianfei.md
+git reset --hard HEAD 将自己的wangjianfei.md还原成.git 里
+    面的wangjianfei.md
 
-      如果已经将垃圾修改生成版本  则可以通过git reset --hard HEAD^ 得到上
-             一个版本
+如果已经将垃圾修改生成版本  则可以通过git reset --hard HEAD^ 得到上
+     一个版本
 
-      .gitconfig 是git的配置文件
+.gitconfig 是git的配置文件
 
-       vim  .gitconfig 是打开git的配置文件 
+vim  .gitconfig 是打开git的配置文件 
 
 ##git basics   git 的基本操作步骤
 
@@ -145,29 +145,29 @@ vimtutor 是查看vim的基本命令信息
 
 6. create the first version
 
-        git commit -a -m "my first version"
+git commit -a -m "my first version"
 
-        -a :是all的意思  即跟踪所有修改地方
+-a :是all的意思  即跟踪所有修改地方
 
-        -m :是message的意思    后面跟上修改留言
-              
-            当message的信息较多时，我们可以执行 git commit -a 进入一个编辑器，
-        第一行是标题 隔一行开始写message的信息
-
-        开始时首先应该在 .gitconfig 里面添加[core]
-                        
-                                                     editor = vim
-
-        将编辑器设置成vim
-            
-
-        tig查看版本
+-m :是message的意思    后面跟上修改留言
       
-       ref:    http://progit.org/
+    当message的信息较多时，我们可以执行 git commit -a 进入一个编辑器，
+第一行是标题 隔一行开始写message的信息
 
-       通过最下面的 chinese 可以转换成中文
+开始时首先应该在 .gitconfig 里面添加[core]
+		
+					     editor = vim
 
-       video: search "linus git" at youku.com 纯英语
+将编辑器设置成vim
+    
+
+tig查看版本
+
+ref:    http://progit.org/
+
+通过最下面的 chinese 可以转换成中文
+
+video: search "linus git" at youku.com 纯英语
 
 #github账户申请
 
@@ -278,15 +278,15 @@ vimtutor 是查看vim的基本命令信息
 
 ##linux basic command  自己掌握
 
-  diff: 
+diff: 
        
-       diff -u file.c file1.c   显示两者的不同
-    
-       diff -u  file.c file1.c  > file.diff  生成差异文件file.diff
+diff -u file.c file1.c   显示两者的不同
 
-       patch file.c < file.diff    生成新文件file.c=flie1.c
+diff -u  file.c file1.c  > file.diff  生成差异文件file.diff
 
-       patch -R file.c < file.diff   还原成源文件
+patch file.c < file.diff    生成新文件file.c=flie1.c
+
+patch -R file.c < file.diff   还原成源文件
 
   wget  加上网址可以对其进行下载   写上 -r  写上总的网址全部下载
 
