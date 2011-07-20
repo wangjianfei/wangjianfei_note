@@ -2,9 +2,9 @@
 
 ##vim 命令的基本模式：  
 
-Command = operator + number + motion
-	d(elete)  1,2
-	y(ank)             gg+G
+	Command = operator + number + motion
+		d(elete)  1,2
+		y(ank)             gg+G
 
 对 vim的命令的基本操作主要包括以上三个部分
 
