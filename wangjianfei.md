@@ -57,7 +57,7 @@
 
      写程序时的vim tip：在写vim时，在普通模式时
 
-                    :w 保存文件  必须首先要做
+<p>&nbsp;&nbsp;&nbsp;&nbsp;  :w 保存文件  必须首先要做</p>
 
                     :sh 在当前vim上打开一个bash
      
