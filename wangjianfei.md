@@ -57,11 +57,11 @@ vimtutor 是查看vim的基本命令信息
 
 写程序时的vim tip：在写vim时，在普通模式时
 
-:w 保存文件  必须首先要做</p>
+:w 保存文件  必须首先要做
 
 :sh 在当前vim上打开一个bash
 
-ctrl d 或者exit 则可以关闭当前的bash
+ctrl d 或者exit 则可以关闭当前的bash,进入vim编辑器
 
 其优点是：光标在vim中的位置不会变  较大程序时比较方便
 
@@ -275,8 +275,11 @@ video: search "linus git" at youku.com 纯英语
 
   bash  is a kind of shell
 
+  bash的配置文件 .bashrc alias 取别名的意思在.bashrc里面 可以通过alias aaa='sudo  apt-get install'  来命名   以便简化命令
 
 ##linux basic command  自己掌握
+
+source folder 是让bash重读该文件
 
 diff: 
        
@@ -324,8 +327,17 @@ patch -R file.c < file.diff   还原成源文件
 
    写程序不考虑硬件则是：高级语言
 
+#C language 程序 基本知识
+
+1、在程序中，出现循环次数时，最好采用宏定义，以方便修改  
+
+当用vim编写时,在插入模式下 Ctrl n   可以补齐字符串  It will search current
+file and include files
+
    
 # tar 
+
+unzip folder.zip -d ~/.file  是解压folder.zip 到主目录下的.file文件
 
 http://www.happypeter.org/posts/10
 
