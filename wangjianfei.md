@@ -41,7 +41,9 @@ redo  是 ctrl+r 撤销超过 返回一步
 如：异常关闭、或者在另一个bash里面打开等
 
 vim  按‘V’则可以进入可视行模式 把光标放在你要选中的内容的第一行或者最后一行
+
 然后按‘j’和‘k’可选中要删除的行,按‘d’即可删除,按‘y’则可复制选中的内容，按‘p’
+
 则可粘贴删除和复制的内容       再次按‘V’则可退出可视行模式
 
 
@@ -71,7 +73,8 @@ ctrl d 或者exit 则可以关闭当前的bash,进入vim编辑器
 ##markdown
 
 http://happypeter.github.com/LGCB/book/toy_markdown.html  是peter老师的笔记
-          里面的链接可以得到学习markdown的资料
+
+里面的链接可以得到学习markdown的资料
 
 word 两边都加上两个'__' 则可以将 word 变成粗体
 
@@ -100,6 +103,12 @@ sudo apt-get install tig     安装  tig   查看软件修改的地方
 
 
 ##git command
+
+delete a Repositories(仓库)
+
+Dashboard -> 进入要删除的仓库 -> Admin -> 到最下面选择Delete this repository
+
+git rm file  delete the file I do not need  git commit -a -m ""  git push
 
 git pull  下载最新的笔记  
 
@@ -154,9 +163,7 @@ git commit -a -m "my first version"
     当message的信息较多时，我们可以执行 git commit -a 进入一个编辑器，
 第一行是标题 隔一行开始写message的信息
 
-开始时首先应该在 .gitconfig 里面添加[core]
-		
-					     editor = vim
+开始时首先应该在 .gitconfig 里面添加[core]    editor = vim
 
 将编辑器设置成vim
     
@@ -265,6 +272,7 @@ video: search "linus git" at youku.com 纯英语
   OS is kernel + desktop env.
 
   path   : 绝对路径: start with /
+
            相对路径: start with .
 
   shell prompt: peter@cow:~/tg-note$
@@ -275,7 +283,9 @@ video: search "linus git" at youku.com 纯英语
 
   bash  is a kind of shell
 
-  bash的配置文件 .bashrc alias 取别名的意思在.bashrc里面 可以通过alias aaa='sudo  apt-get install'  来命名   以便简化命令
+  bash的配置文件 .bashrc alias 取别名的意思在.bashrc里面 可以通过
+
+  alias aaa='sudo  apt-get install'  来命名   以便简化命令
 
 ##linux basic command  自己掌握
 
@@ -331,8 +341,9 @@ patch -R file.c < file.diff   还原成源文件
 
 1、在程序中，出现循环次数时，最好采用宏定义，以方便修改  
 
-当用vim编写时,在插入模式下 Ctrl n   可以补齐字符串  It will search current
-file and include files
+当用vim编写时,在插入模式下 Ctrl n   可以补齐字符串  It will search
+
+ current file and include files
 
    
 # tar 
