@@ -137,7 +137,8 @@ git pull  下载最新的笔记
 git diff 查看自己现在wangjianfei.md 和.git 里面的wangjianfei.md的区别 
 
 git reset --hard HEAD 将自己的wangjianfei.md还原成.git 里
-    面的wangjianfei.md
+
+ 面的wangjianfei.md
 
 如果已经将垃圾修改生成版本  则可以通过git reset --hard HEAD^ 得到上
      一个版本
