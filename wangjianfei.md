@@ -73,7 +73,7 @@ exampls:在vim文件写信时，查询单词拼写错误 末行模式:set spell
 
 unix下 '\n'='\n'+'\r'  windows   '\n'='\n'   注意文件格式匹配问题
 
-同时 设置imap jj <esc>  在插入模式时退出
+同时 设置imap jj   <<esc>>  在插入模式时退出
 
 写程序时的vim tip：在写vim时，在普通模式时
 
@@ -130,7 +130,7 @@ delete a Repositories(仓库)
 
 Dashboard -> 进入要删除的仓库 -> Admin -> 到最下面选择Delete this repository
 
-git rm file  delete the file I do not need  git commit -a -m ""  git push
+git rm file  delete the file I do not need  git commit -a -m  "git push"
 
 git pull  下载最新的笔记  
 
