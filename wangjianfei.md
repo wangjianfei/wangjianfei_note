@@ -1,5 +1,5 @@
 # vim
-aaaaaaaaaaaaaaaaaaaaaaa
+
 ##vim 命令的基本模式：  
 
 	Command = operator + number + motion
