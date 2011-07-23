@@ -9,14 +9,22 @@
 对 vim的命令的基本操作主要包括以上三个部分
 
 ##vim基本命令：
-    
+
+###插入模式
+
+vim中查单词：ctrl + x + k
+
 ### 普通模式：
+
+r and R 都可以用来替换字符  r 替换一个字符   R 替换多个字符
 
 undo 是 u键  撤销上次操作
 
 redo  是 ctrl+r 撤销超过 返回一步
 
 ### 模行模式：
+
+:!命令  可以执行和bash里面一样的命令
 
 打开多个文件时的一些操作：
 
@@ -49,13 +57,23 @@ vim  按‘V’则可以进入可视行模式 把光标放在你要选中的内�
 
 在可视行下选中，按‘>’'<'则可以进行整体缩进
    
-vim 打开多个文件时 
-
-.vimrc 是vim的配置文件
-
 vim .vimrc  里面可以写上自己对vim的设置  可以永久生效
 
+在vimrc中：ctrl + x + f 为补齐路径
+
 vimtutor 是查看vim的基本命令信息
+
+key map  -------->是映射的意思
+
+exampls:在vim文件写信时，查询单词拼写错误 末行模式:set spell
+
+命令比较繁琐：在vimrc里面设置：map ,ss :set spell<\cr>
+
+回车：cariage return 'r'   换行 '\n'
+
+unix下 '\n'='\n'+'\r'  windows   '\n'='\n'   注意文件格式匹配问题
+
+同时 设置imap jj <esc>  在插入模式时退出
 
 写程序时的vim tip：在写vim时，在普通模式时
 
@@ -67,6 +85,10 @@ ctrl d 或者exit 则可以关闭当前的bash,进入vim编辑器
 
 其优点是：光标在vim中的位置不会变  较大程序时比较方便
 
+
+vim的帮助
+
+普通模式下 :h +命令  如果是插入时的命令  :h i_ctrl-t 来实现查询
 
 #两种网页编写语言：
 
@@ -305,6 +327,7 @@ patch -R file.c < file.diff   还原成源文件
 
   totem 加上文件名可以对其进行播放
  
+ifconfig 查看电脑的IP地址
 
 ##linux command tips
 
@@ -345,6 +368,23 @@ patch -R file.c < file.diff   还原成源文件
 
  current file and include files
 
+2、coding style  代码形式
+   
+   推荐用4个空格来缩进  不允许tab和空格混合使用
+
+   gitbub 中搜索peter—vim，可以得到peter老师的vim配置
+
+   ctrl+t 向后缩进   ctrl+d 向前缩进
+ 
+3、怎么读程序：
+
+首先装一个插件: sudo apt-get install ctags
+
+在工程中现执行  ctags folder   生成tags文件
+
+读程序时 光标放在函数声明处或者定义处：
+
+ctrl+]看函数定义  ctrl+t 返回到刚才光标所在的位置
    
 # tar 
 
@@ -370,6 +410,28 @@ http://news.ycombinator.com/news
 
 
 # 个人学习
+
+##有关局域网的一些小知识：
+
+常见端口地址：ftp:27  http:80   ssh:
+
+linux 用ssh
+
+成为服务器断要装 sudo apt-get install openssh-server
+
+成为客户端要装 ssh-client
+
+在bash里输入要进入的电脑的example：ssh peter@192.168.1.17
+
+输入密码
+
+sudo services ssh stop 关闭ssh服务
+
+sudo services ssh start 打开ssh服务
+
+从别人电脑上拷贝东西，在自己的电脑上：scp peter@192.168.1.17:~/file(文件路径) .
+
+services ssh status 看服务状态
 
 ## language
 
