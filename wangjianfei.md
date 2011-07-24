@@ -73,7 +73,9 @@ exampls:在vim文件写信时，查询单词拼写错误 末行模式:set spell
 
 unix下 '\n'='\n'+'\r'  windows   '\n'='\n'   注意文件格式匹配问题
 
-同时 设置imap jj   <<esc>>  在插入模式时退出
+同时 设置imap jj   `<esc>`  在插入模式时退出
+
+注意：__`<esc>`__  要加单引号  否则不能显示  系统把默认为转义字符
 
 写程序时的vim tip：在写vim时，在普通模式时
 
@@ -126,6 +128,22 @@ sudo apt-get install tig     安装  tig   查看软件修改的地方
 
 ##git command
 
+git checkout 哈希值  可以打开那个版本 tig时也就只显示这个版本以前的版本
+
+git checkout 哈希值 -b  分支名  创建一个分支 名字为“分支名”
+
+git checkout master 回到主分支
+
+git branch   查看分支
+
+要删除某个分支  git checkout  到其它分支  才能删除此分支
+
+git branch -D 分支名
+
+重命名 mv main.c hello.c  git add . 可以实现重命名
+
+git mv main.c hello.c  也行
+
 delete a Repositories(仓库)
 
 Dashboard -> 进入要删除的仓库 -> Admin -> 到最下面选择Delete this repository
@@ -140,8 +158,11 @@ git reset --hard HEAD 将自己的wangjianfei.md还原成.git 里
 
  面的wangjianfei.md
 
-如果已经将垃圾修改生成版本  则可以通过git reset --hard HEAD^ 得到上
-     一个版本
+如果已经将垃圾修改生成版本  则可以通过git reset --hard HEAD^ 得到上一个版本
+
+如果已将垃圾push上去，则可以通过git revert 删除上次修改，生成和它上上个版本
+
+一样的又一个版本
 
 .gitconfig 是git的配置文件
 
@@ -312,6 +333,34 @@ video: search "linus git" at youku.com 纯英语
 
 ##linux basic command  自己掌握
 
+while are you ?
+
+which + folder 查看命令装在哪里
+
+locate + 部分关键字  定位在哪里 locate 有个数据库 是定时刷新的 不是实时刷新
+
+作整个系统查询非常方便   但只能查找老文件    刚刚建立的文件需要更新 
+
+sudo updatedb ---->更新数据库
+
+find + 目录 则列出所有的内部文件  |---- >为管道符  是将前面的输出作为后面的输入
+
+find + 目录|grep 部分关键字  可以查出所要求的   
+
+ps aux ---> 类似与windows下的任务管理器  ps aux | grep folder 打开目标进程
+
+kill+进程号 就是关闭  kill -9 + 进程号   强行关闭
+
+xxx 是peter老师编写的命令  
+
+首先从 github 中git clone hen  选择打开search ，打开curse , 根据README安装
+
+xxx   则可以使用
+
+xxx + 部分关键字  则可以显示要查询的信息  按“e”可以查看  shift zz  退出
+
+xxx 主要用在项目中
+
 source folder 是让bash重读该文件
 
 diff: 
@@ -356,6 +405,10 @@ ifconfig 查看电脑的IP地址
    linux main的返回值默认是0
 
    echo $? 是查看函数的返回值
+
+   ldd 查看函数链接的库
+
+   gcc -l+链接库的名字     标准库的链接在平时编译时省略  而不是不链接
 
    写程序要考虑硬件则是：低级语言
 
