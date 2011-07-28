@@ -24,6 +24,10 @@ redo  是 ctrl+r 撤销超过 返回一步
 
 ### 模行模式：
 
+:vnew file 打开两个窗口， 纵向分成两部分
+
+:new  file 横向分成两部分 
+
 :!命令  可以执行和bash里面一样的命令
 
 打开多个文件时的一些操作：
@@ -56,7 +60,7 @@ vim  按‘V’则可以进入可视行模式 把光标放在你要选中的内�
 
 
 在可视行下选中，按‘>’'<'则可以进行整体缩进
-   
+   则可以进行整体缩进 
 vim .vimrc  里面可以写上自己对vim的设置  可以永久生效
 
 在vimrc中：ctrl + x + f 为补齐路径
@@ -333,6 +337,8 @@ video: search "linus git" at youku.com 纯英语
 
 ##linux basic command  自己掌握
 
+dpkg -l 查看所装插件在那里，并且有那些文件
+
 while are you ?
 
 which + folder 查看命令装在哪里
@@ -394,6 +400,12 @@ ifconfig 查看电脑的IP地址
    ctrl d  关闭当前bash     在command line write 'exit'
 
    安装插件的基本格式：sudo apt-get install 插件名 
+
+   卸载插件的基本格式：sudo apt-get remove --purge folder
+   
+   或者 sudo apt-get purge folder
+
+   下载资源来源： cd /etc/apt ---> sources.list 
  
 
 #gcc basic knowledge 编译器基本知识
@@ -414,7 +426,7 @@ ifconfig 查看电脑的IP地址
 
    写程序不考虑硬件则是：高级语言
 
-#C language 程序 基本知识
+#CC language 程序 基本知识
 
 1、在程序中，出现循环次数时，最好采用宏定义，以方便修改  
 
@@ -438,8 +450,46 @@ ifconfig 查看电脑的IP地址
 
 读程序时 光标放在函数声明处或者定义处：
 
+在vim 中，光标放在接口上，按‘K’,则可查找来源
+
 ctrl+]看函数定义  ctrl+t 返回到刚才光标所在的位置
-   
+
+4、(2011.07.27)按位与、按位或、按位取反、按位异或
+
+int--->char时，只是把整型的低八位给了字符型，当为正数时，正确；当为负数时，给
+
+的是补码，要转换成真实的数值
+
+char---->int , int的高位用char的最高符号位填补，得到的是int的补码，在转换成真实
+
+的数值
+
+在输入负数时，不要用十六进制，它把十六进制直接作为补码，计算结果会出错
+
+5、(2011.07.28) switch 是选择入口的语句  进入语句只有遇到break才停止
+
+每个子函数在执行时都会分配一个栈空间，执行完程序时，释放空间 实参--->形参
+
+形参不传值给实参
+
+在一个函数中有多个数值类型，当它们进行计算时 ，占用空间小的向占用空间大的转换，
+
+    int a = 5;
+
+    int b = 6;
+
+    double c = a + b;
+
+计算时，先把a、b转换成double型 再进行计算 double型一般不进行比较大小 因为有精度
+
+注意int型和unsigned int 进行计算时，把int型转换成unsigned int型
+
+当程序出现问题时，排错顺序：自己的程序  编译器  硬件出现问题
+
+指针 是 存储地址的变量 ； 指针指向某个变量，也就是把变量地址给指针
+
+sizeof is a key word ,sizeof(int)可以查看int型占几个变量
+
 # tar 
 
 unzip folder.zip -d ~/.file  是解压folder.zip 到主目录下的.file文件
@@ -465,6 +515,12 @@ http://news.ycombinator.com/news
 
 # 个人学习
 
+##ubuntu 的安装问题
+
+一个'/'区 一个swap 固定的  虚拟内存
+
+另一个 再加一个home的分区,以便重装系统时不删除自己的东西
+
 ##有关局域网的一些小知识：
 
 常见端口地址：ftp:27  http:80   ssh:
@@ -486,6 +542,10 @@ sudo services ssh start 打开ssh服务
 从别人电脑上拷贝东西，在自己的电脑上：scp peter@192.168.1.17:~/file(文件路径) .
 
 services ssh status 看服务状态
+
+## 常用播放器
+
+mplayer
 
 ## language
 
