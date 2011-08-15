@@ -1,4 +1,4 @@
-# vim
+
 
 ##vim 命令的基本模式：  
 
@@ -569,6 +569,41 @@ static int count 定义局部变量时，只有本函数可用，单调用结束
 
 extern int count 声明count是一个已定义的外部变量
 
+10、（0815）makefile 的格式
+
+vim  Makefile
+
+#this is for chess
+
+第一种：
+
+main:main.c
+    gcc main.c -O main -Wall
+clean:
+    rm -rf main
+
+    rm -rf *.o
+
+    rm -rf ~*
+
+第二种：
+
+#this is for chess
+
+src=main.c
+
+para=-o main -Wall
+
+main:$(src)
+    gcc $(src) $(para)     gcc前为一个空格  它在写执行语句时都要敲一个空格
+clean:
+    rm -rf main
+
+    rm -rf *.o
+            
+    rm -rf ~*
+
+第二种形式为最好 方便
 
 # tar 
 
