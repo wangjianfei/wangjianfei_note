@@ -28,6 +28,8 @@ redo  是 ctrl+r 撤销超过 返回一步
 
 :new  file 横向分成两部分 
 
+:sp 是行向分屏  ：vsp 是纵向分屏
+
 :!命令  可以执行和bash里面一样的命令
 
 打开多个文件时的一些操作：
@@ -60,7 +62,7 @@ vim  按‘V’则可以进入可视行模式 把光标放在你要选中的内�
 
 
 在可视行下选中，按‘>’'<'则可以进行整体缩进
-   则可以进行整体缩进 
+
 vim .vimrc  里面可以写上自己对vim的设置  可以永久生效
 
 在vimrc中：ctrl + x + f 为补齐路径
@@ -91,6 +93,7 @@ ctrl d 或者exit 则可以关闭当前的bash,进入vim编辑器
 
 其优点是：光标在vim中的位置不会变  较大程序时比较方便
 
+gg=G可以在vim中排版C程序
 
 vim的帮助
 
@@ -441,7 +444,9 @@ ifconfig 查看电脑的IP地址
    gitbub 中搜索peter—vim，可以得到peter老师的vim配置
 
    ctrl+t 向后缩进   ctrl+d 向前缩进
- 
+
+   gg=G可以在vim中排版C程序
+
 3、怎么读程序：
 
 首先装一个插件: sudo apt-get install ctags
@@ -506,6 +511,14 @@ srand(time(NULL)),种一种子，也就是采一个时间点，rand() 产生一�
 
 它们属于stdlib和time库，用man 可以查看
 
+man 可以分三部分：
+
+man 1 命令  ：是指系统的命令
+
+man 2 命令  ：是指系统的函数
+
+man 3 命令  : 是标准的函数
+
 getchar() 是单个标准字符输入，在程序输出时，可以对其控制
 
 8、（2011.07.31） 函数的递归调用，即自己调用自己，例程序：汉诺塔、求阶乘、
@@ -541,9 +554,11 @@ typedef 是定义类型：typedef strcut date date   下面就可以用date定�
 
 %-5d 是左对齐的意思 比较以下：%-5d 和%5d 就一目了然了
 
-malloc(sizeof(struct date)); 开辟一个存放这种结构体堆空间；malloc函数用完了，
+malloc(sizeof(struct date)); 开辟一个存放这种结构体堆空间；malloc函数生命
 
-必须用free()释放，不然会造成内存泄漏
+周期是整个函数，作用域也是整个函数；malloc函数用完了，必须用free()释放，
+
+不然会造成内存泄漏;如果进程完了，但没有关闭，也会造成内存泄漏
 
 在函数调用中 ，函数执行结束 ，内存释放 ，但堆空间不释放
 
@@ -555,7 +570,7 @@ exit();是一个终止进程的的函数，执行后可以终止进程
 
 const 定义的变量值不能修改
 
-const chat *p 指的是*p的内容不能修改 ，并不是指针不能改
+const chat *p 指的是*p的内容不能修改 ，并不是指针不能改（p能改）
 
 char * const p  指的是p不能修改
 
@@ -565,11 +580,31 @@ static int count 定义全局变量时，只有本文件可见
 
 static int count 定义局部变量时，只有本函数可用，单调用结束后不释放，下次
 
-调用时，上次的值让然存在
+调用时，上次的值让然存在,可以说是延长生命周期
 
 extern int count 声明count是一个已定义的外部变量
 
 10、（0815）makefile 的格式
+
+makefile 的一些基本知识：
+
+是一个项目代码管理工具
+
+主要有三个方面：目标：main.o  依赖：main.c  命令: 写时要敲一个tab键
+
+.PHONY clean 是声明伪目标
+
+makefile的特殊符号：
+
+gcc $@ 是目标  $^ 是依赖  $->引用变量  $< 依赖中出现的第一个文件
+
+%,* 都是通配符  但不知道有什么区别
+
+定义变量 CC=gcc
+
+CFLAGS = -Wall -g
+
+在makefile中是树的结构，执行时只执行第一棵树，除特定说明外
 
 vim  Makefile
 
@@ -595,8 +630,11 @@ src=main.c
 para=-o main -Wall
 
 main:$(src)
+
     gcc $(src) $(para)     gcc前为一个空格  它在写执行语句时都要敲一个空格
+
 clean:
+
     rm -rf main
 
     rm -rf *.o
@@ -604,6 +642,216 @@ clean:
     rm -rf ~*
 
 第二种形式为最好 方便
+
+makefile 的另一种通用格式（万能makefile）
+
+
+CFLAGS = -Wall -g
+
+CC = gcc
+
+src = $(wildcard *.c)
+
+obj = $(patsubst %.c,%.o,$(src))
+
+main:$(obj)
+
+	$(CC) $^ -o $@
+
+%.o:%.c
+
+	$(CC) $(CFLAGS) $< -c
+
+.PHONY : clean
+
+clean:
+	rm -rf *.o
+
+	rm -rf main
+
+11、（0817）有关文件操作的一些基本操作:
+
+FILE 定义文件类型的变量
+
+fopen 打开文 格式：fopen("path" , "mode")
+
+FILE *fp      fclose(fp)
+
+fprintf 输出内容到文件 格式:fprintf(dest fp , "%s\n" , content address)
+
+fscanf 读出文件内容到指定的地方 格式：fscanf(content fp ,"%s",dest address)
+
+但 fscanf 遇到空格就结束
+
+fgets 读出文件内容到指定的地方 格式：
+
+fgets(char *s, int size, FILE *stream)
+
+s 为目标地址  size为输出字符的个数最多为size-1   stream 数据流的来源
+
+fgets(r_str , 5 , fp)
+
+如果输入的字符数大于size 则存size-1个字符 一个‘\0’
+
+如果输入的字符数比size小，则连同回车一起存入
+
+即使是要输入数字，可以通过atoi来实现转换 注意每次输入后，
+
+a[strlen(a)-1] = '\0'  ；里面有一个回车键 num = atoi(a);
+
+fgets 3中结束的条件：
+
+       遇到空格换行  即回车
+
+       达到size的值
+
+       文件内容结束
+
+puts 输出时自动在屏幕上换行 格式：puts("string");
+
+gets 有警告，因为它很有可能越界  实际应用中很少用
+
+fgets 输入时保存回车与换行
+
+gets 输入时不保存回车与换行
+
+getc = fgetc
+
+putc = fputc  返回为整型
+
+#C语言中级
+
+1、(0825)
+
+访问了不该访问的地址：就会出现断错误
+
+在执行一个程序时，实际的内存中会映射出一个虚拟的4G的内存，3G-->4G是系统
+
+运行空间，不能访问和占用，否则会出现断错误   1G-->3G是一个ELF格式的文件
+
+从低地址到高地址分为：text(代码区，机器码)-->rodata(只读数据区,放的是直
+
+接用指针定义的字符串 char *p = "hello",其hello不可以改变；还有用const定
+
+义的变量,如果rodata段没有数据，可以压缩为零)-->data(存放已经初始化的全
+
+局变量，即值不为0的全局变量)-->bss(存放未初始化的全局变量，即使在程序中
+
+给它赋值，它让然在bss段)-->堆空间(可读可写)-->共享库(只可读)-->栈空间(可
+
+读可写)-->命令行参数
+
+变量/函数名--->都是一个符号，是一个地址
+
+功能函数设计注意：<1>名称（知道干什么） <2>传参 <3>返回值
+
+命令行参数，执行命令时写几个就几个 argc 是参数个数 *argv[i]是第i个参数
+
+在输入一个字符串时，可以用*argv[1] *argv[2] ....  和a.out一起输入
+
+有关类型提升：在变量计算时类型提升不会有问题，反过来时会报错
+
+有关exit和return
+
+exit不管在那里，直接退出整个程序
+
+return是结束本函数  在main函数中，它两个作用一样
+
+vim text.c +32(行数) 直接跳到指定的行
+
+2、(0826)有关gdb 是GNU提供的调试器
+
+gdb是针对已经编译通过的程序
+
+在编译时 gcc -Wall -g test.c -o test 加上-g 是使用gdb的前提
+
+run 从头运行该程序，到断点或者程序结束时停止
+
+continue（快捷命令 c）是接着前面的运行，到断点或者程序结束时停止
+
+start 是开始单步执行 遇到错误时就显示错误
+
+next(快捷命令 n) 是执行下一步
+
+enter键是执行上一条命令
+
+print(快捷命令 p) 打印的意思
+
+list(快捷命令l) 打印程序  +10（行号）打印指定的行
+
+break(快捷命令b) 20(行号) 就是在指定行加上断点
+
+info b 查看断点信息
+
+delete(快捷命令d) breakpoint 3( 断点号) 可以删除此断点
+
+运行到一个函数时 step(快捷命令 s) 是进入子函数
+
+一些有关标准输入输出的缓冲区的基本知识：
+
+标准输入输出缓冲区有4096个字节
+
+printf输出的条件(1)遇到'\n'(2)fflush(3)缓冲区满(4)程序结束
+
+fflush()是一个清空缓冲区的函数，清空输入缓冲区时fflush（stdin）,清空输出
+
+缓冲区时fflush（stdout）
+
+链接原理：
+
+即a.c-->a.out
+
+要经过预处理(gcc -E a.i) 编译(gcc -S a.s) 汇编(gcc -c a.o) 链接(gcc a.out)
+
+预处理：展开宏 展开头文件的声明 把注视过滤掉
+
+a.o 中是相对地址  objdump -dxsS 反汇编 机器语言转换成汇编语言 高手可以用来软件
+
+破解
+
+链接：插入启动程序 初始化内存 初始化堆栈 加载共享库 相对地址变化成绝对地址
+
+a.o 和a.out  的区别：地址不同  启动代码不同  执行权限不同
+
+静态库和动态库
+
+静态库，每次运行时，都全部加载在程序中，占内存大
+
+动态库，占内存小
+
+ldd a.out  追踪a.out 依赖的共享库
+
+静态库的有关知识：
+
+静态库的后缀是.o
+
+-L是接路径   -l接的是库名  -I接的是声明文件的路径
+
+gcc a.c b.c -c 生成.o文件
+
+ar rs libstatic.a a.o b.o   生成静态库
+
+动态库的有关知识：
+
+gcc -c -fPIC a.c b.c  生成.o文件  -fPIC 是生成与位置无关的.o文件
+
+gcc -shared -o libstatic.so a.o b.o  生成动态库
+
+共享库的三种路径：
+
+(1) export LD_LIBRARY_PATH=绝对路径   等号两边不能有空格
+
+export LD_LIBRARY_PATH=空   则可以删除这个路径
+
+echo $LD_LIBRARY_PATH  是查看其中有哪些路径
+
+(2) 制作共享库拷贝在共享库的路径下 /usr/lib   /lib  用cp命令即可实现
+
+(3) 修改/etc/ld.so.conf   要以sudo用户登录 修改后还要更新才能生效
+
+sudo ldconfig -v
+
+3、(0827)
 
 # tar 
 
@@ -674,3 +922,11 @@ http://dict.youdao.com/
 
 http://learn.akae.cn/media/index.html
 
+刑文鹏老师：
+xingwenpeng@akaedu.org
+18672230285
+#好书推荐
+linux一站C编程
+深入理解计算机系统
+unix环境高级编程（中级）
+GNU make
