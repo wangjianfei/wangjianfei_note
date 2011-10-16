@@ -28,7 +28,7 @@ redo  是 ctrl+r 撤销超过 返回一步
 
 :new  file 横向分成两部分 
 
-:sp 是行向分屏  ：vsp 是纵向分屏
+:sp 是行向分屏  ：vsp 是纵向分屏  用shift zz  退出
 
 :!命令  可以执行和bash里面一样的命令
 
@@ -851,11 +851,230 @@ echo $LD_LIBRARY_PATH  是查看其中有哪些路径
 
 sudo ldconfig -v
 
-3、(0827)
+3、(0827) &*P == *&P ==P
+
+数组和链表的优缺点比较：
+
+数组随机性强  链表增删元素能力强
+
+结构体和数组的比较：
+
+数组不能进行两个之间的赋值  结构体可以进行元素之间的赋值 但在结构体中的数组
+
+可以互相赋值 所以很多时候可以通过结构体给数组赋值
+
+
+int (*p)[10] 是数组指针
+
+int *p[10] 是指针数组 里面存放的是指针
+
+对于二位数组传参时，可以用 int (*p)[10] 也可以用p[3][4]  但最好是用(*p)[10]
+
+注意在调用时都只写p
+
+对与结构体，为指针时，用-->
+
+为变量时用.
+
+sizeof是在编译时执行  strlen是在运行时执行
+
+const char *p p可以改  *p不可以改
+
+char const *p p可以改  *p不可以改
+
+char *const p p不可以改 *p可以改
+
+char const p  p内容不可以改
+
+char const *const p   p,*p都不可以改
+
+const char  *const p   p,*p都不可以改
+
+可不可以改  主要看const修饰谁
+
+函数指针的定义：
+
+int (*p)(int ,char) 返回值是int型，参数一个整型 一个字符型
+
+int (*p[10])(int ,char) 函数指针数组 ，里面含有十个函数指针 每个返回值都是
+
+int型，参数一个是int型 一个是char型 ，当其元素为无时，返回为NULL
+
+
+
+4、(0906)在PC机中，CPU执行程序  内存是运行程序  硬盘是存储程序
+
+系统的任务：1,文件I/O 文件系统 2,进程(一个执行的程序) 线程(是进程的一个单位)
+
+信号(两个程序之间的通讯) 3,内存管理(物理内存 虚拟内存) 4, 网络模块 5,驱动
+
+硬件（实行功能 ，但什么时候实现由应用程序决定）
+
+系统函数和C标准库函数的区别：
+
+系统函数为非标准库函数，只能在UNIX中运行   
+
+C标准库函数 是脱离系统的函数 只要有C编译环境  就可以运行
+
+.exe windows VC编译器
+
+.a.out linux gcc编译器
+
+.c是夸系统平台
+
+printf--->write---->驱动---->显示
+
+硬盘的速度：M/s
+
+现在cpu的速度是G级别的，执行一条指令是1us
+
+硬件存储速度排序：
+
+寄存器是 1us
+
+SRAM一般是作catch用 100us  
+
+SDRAMM(电容充电 用于手机 一个沿采数据) DDRAM(用于PC机 两个沿采数据)
+
+硬盘
+
+msg：表示汇编
+
+启动程序时自动打开3个文件：stdin stdout  stderr
+
+系统函数 ：open write read 无缓冲区  实际上是有个内核缓冲区 时时更新
+
+在man手册中：1是系统命令 2是系统函数 3是C标准库函数 
+
+2 K(大写)  可以直接查看man手册
+
+每打开一个文件，其描述符是：当前没有使用的最小文件描述符
+
+以‘0’ 开始的数是八进制
+
+最多打开1024个描述符，大于1024时会报错,返回-1 
+
+shell解释器本身有一个自带的掩码默认是022，可以用umask查看 也可以umask 数值
+
+对其进行改变
+
+在open函数中，第三个参数和umask进行按位间距与，得到才是open函数中的mode的值
+
+5、（0907） 系统函数 看书
+
+6、（0908） 头文件查找：
+
+cd /usr/src
+
+grep "头文件名字" ./* -R
+
+find ./ -name fcntl.h 文件名
+
+输入重定向<   输出重定向 <
+
+7、（0910） 看书本文件系统
+
+chown root:root 文件名
+
+文件系统：
+
+/dev/sda 是硬盘  /dev/sdb 是U盘
+
+操作步骤：
+
+sudo df   sudo mount /dev/sub /mnt  挂载起来
+
+sudo umount /mnt   卸载
+
+8、（0911）
+
+进程就是一个运行的程序
+
+分时复用CPU实现多进程  
+
+A进程使用CPU 运行态
+
+B进程等待使用CPU 就绪态
+
+C进程睡眠10s 挂起 阻赛
+
+ps -aux 查看进程号   PCB进程块保存当前进程状态
+
+当A进程转B进程时，A数据保存在A进程PCB中
+
+fork()产生两个进程，当子进程不需要写操作时，子父进程共用一段内存 需要写时 在分内存
+
+父进程的ID一定大于子进程的ID
+
+9、（0912）
+
+进程之间的通信方式：
+
+int fd[2]; pipe(fd)创建管道  只使用与父子进程之间通信
+
+mkfifo pipofifo  创建有名管道  使用与任意进程之间的通信
+
+mmap() 函数可以实现进程之间的通信
+
+10、（0913）
+
+signal(信号)
+
+kill -l 打印出所有信号  前32个信号可用
+
+SIGUSR1 SIGUSR2 两个信号由用户定义
+
+man 7 signal man 手册第七部分
+
+kill 可以发送一个信号给指定的进程
+
+kill -11 2379    kill 2379 默认为是发送终止信号
+
+ctrl c 产生信号2  ctrl \ 产生信号3  ctrl z 产生stop 信号
+
+11、（9021）
+
+开源库的使用方法：
+
+(1)解压缩
+
+(2)./configure 检测文件是否有丢失，如果没有生成MAKEFILE
+
+开源库中有./lib 其中有共享库和静态库
+
+(3)make  (4)添加共享库
+
+ifconfig   操作网卡  查看网络信息 mac地址就是网口即硬件地址 独一无二
+
+sudo ifconfig eth0 down 关网卡
+
+
+sudo ifconfig eth0 up 开网卡
+
+sudo ifconfig eth0 192.168.1.22 命令一个IP
+
+MTU 是最大传输字节数
+
+有关网络号：看路由是否可以ping通
+
+首先ping自己  再ping 别人  再ping 网端  再ping 外网
+
+
+
+
+
 
 # tar 
 
 unzip folder.zip -d ~/.file  是解压folder.zip 到主目录下的.file文件
+
+压缩 tar zcvf dir.tar.gz dir
+
+解压 tar zxvf dir.tar.gz
+
+压缩 tar jcvf dir.tar.bz2 dir
+
+解压 tar jxvf dir.tar.bz2
 
 http://www.happypeter.org/posts/10
 
