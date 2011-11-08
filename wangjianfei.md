@@ -135,7 +135,7 @@ sudo apt-get install tig     安装  tig   查看软件修改的地方
 
 ##git command
 
-git checkout 哈希值  可以打开那个版本 tig时也就只显示这个版本以前的版本
+git checkout 哈值  可以打开那个版本 tig时也就只显示这个版本以前的版本
 
 git checkout 哈希值 -b  分支名  创建一个分支 名字为“分支名”
 
@@ -539,12 +539,12 @@ array = &array[0] = array[0] = &array[0][0]
 
 有关结构体的一些基本知识
                             
-    struct date
-    {
-      int a ;
-      int b ;
-      struct date *ptr ;
-    };
+struct date
+{
+  int a ;
+  int b ;
+  struct date *ptr;
+};
 
 不分配任何存储空间 注意最后的';'不要丢了
 
