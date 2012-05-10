@@ -1,5 +1,4 @@
 
-
 ##vim 命令的基本模式：  
 
 	Command = operator + number + motion
@@ -73,7 +72,9 @@ key map  -------->是映射的意思
 
 exampls:在vim文件写信时，查询单词拼写错误 末行模式:set spell
 
-命令比较繁琐：在vimrc里面设置：map ,ss :set spell<\cr>
+命令比较繁琐：在vimrc里面设置：map ,ss :set spell<cr>
+
+map <tab> :bn<cr> 多个文件编辑时比较方便
 
 回车：cariage return 'r'   换行 '\n'
 
